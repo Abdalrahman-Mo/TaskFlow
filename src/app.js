@@ -1,10 +1,9 @@
 import express from "express";
 import cors from "cors";
 import authRoute from "./routes/auth.routes.js";
-import healthRoute from "./routes/health.routes.js";
-import dbCheckRoute from "./routes/db.routes.js";
 import projectsRoute from "./routes/projects.routes.js";
 import membersRoute from "./routes/members.routes.js";
+import tasksRoute from "./routes/tasks.routes.js";
 import session from "express-session";
 // import errorHandler from "./middleware/errorHandler.middlware.js";
 
@@ -31,11 +30,10 @@ app.use(
     credentials: true,
   }),
 );
-app.use("/api", healthRoute);
-app.use("/api", dbCheckRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/projects", projectsRoute);
 app.use("/api/projects", membersRoute);
+app.use("/api/projects", tasksRoute);
 // app.use(errorHandler);
 
 export default app;
